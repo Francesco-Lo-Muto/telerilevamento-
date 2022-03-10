@@ -4,4 +4,4 @@
 library (raster)
 
 # settaggio cartella di lavoro
-# setwd("C:/lab/") # windows
+setwd("C:/lab/") # windows
