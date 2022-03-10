@@ -3,5 +3,5 @@
 # install.packages ("raster")
 library (raster)
 
-# settaggio cartella di lavoro
+# settaggio cartella di lavoro all'interno del percorso "C"
 setwd("C:/lab/") # windows
