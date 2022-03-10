@@ -2,3 +2,6 @@
 
 # install.packages ("raster")
 library (raster)
+
+# settaggio cartella di lavoro
+# setdw("C:/lab/") # windows
