@@ -6,5 +6,5 @@ library (raster)
 # settaggio cartella di lavoro all'interno del percorso "C"
 setwd("C:/lab/") # windows
 
-# import 
+# tramine la funzione brick importiamo la nostra immagine dal paccheto che abbiamo scaricato.
 l2011 <- brick ("p224r63_2011.grd")
