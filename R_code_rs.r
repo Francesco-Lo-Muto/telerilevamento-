@@ -11,3 +11,12 @@ l2011 <- brick ("p224r63_2011.grd")
 
 # plottiamo la nostra prima immagine usando la funzione plot
 plot()
+
+colorRampPalette () # funzione che serve per creare una scala
+colorRampPalette("black", "grey", light grey")
+
+c (5, 6, 10, 20, 29) # sono una serie di caratteri e li indico con una c, faccio la stessa cosa con la funzione colorRampPalette
+colorRampPalette(c("black", "grey", light grey")) (100)
+
+cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
+plot(l2011, col=cl)
