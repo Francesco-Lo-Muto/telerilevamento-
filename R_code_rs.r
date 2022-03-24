@@ -87,3 +87,24 @@ plot(l2011$B3_sre, col=clr)
 # NIR
 clnir <- colorRampPalette(c("red", "orange", "yellow")) (100)
 plot(l2011$B4_sre, col=clnir)
+
+# installiamo il pacchetto RStoolbox
+install.packages("RStoolbox")
+  # plot of l2011 in the NIR channel (dove la vegetazione ha un'alta riflettanza)
+clnir <- colorRampPalette(c("red", "orange", "yellow")) (100)
+plot(l2011$B4_sre, col=clnir)
+# oppure posso plottare in un altro modo:
+plot (l2011[[4]])
+# quando plotto un immagine satellitare posso utilizzare solo tre bande per volta (in questo caso RGB)
+# per costruire un immagine satellitare montiamo le tre bande del rosso verse e blu attraverso la funzione plotRGB
+plotRGB(l2011, r=3, g=2, b=1, stretch="lin")
+# abboamo ottenuto un immagine a colori naturali
+# ora utilizziamo l'infrarosso naturale ma potendo solo utilizzare solo 3 bande insiem metteremo al posto del 3 il 4 al posto del 2 il 3 e al posto del 1 il 2, la banda del blu resta fuori e posso utilizzare la banda dell infrarosso
+plotRGB(l2011, r=4, g=3, b=2, stretch="lin")
+# cosi avremo non i colori che vede l'uomo ma tutto quello che rilfette all'infrarosso vicino diventerà di colore rosso.
+# tutto il rosso è vegetazione
+#ora porvo a spostare l'infrarosso nella componente green
+plotRGB(l2011, r=3, g=4, b=2, stretch="lin")
+# tutto quello che rifletterà nell'infrarosso vicino diventrà verde fluorescente
+#provo a passare l'infrarosso anche nel blu e la vegetazione diventerà blu
+ plotRGB(l2011, r=3, g=2, b=4, stretch="lin")
