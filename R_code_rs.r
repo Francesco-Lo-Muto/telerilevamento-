@@ -108,3 +108,19 @@ plotRGB(l2011, r=3, g=4, b=2, stretch="lin")
 # tutto quello che rifletterà nell'infrarosso vicino diventrà verde fluorescente
 #provo a passare l'infrarosso anche nel blu e la vegetazione diventerà blu
  plotRGB(l2011, r=3, g=2, b=4, stretch="lin")
+# usiamo hist invece di lin è notiamo un alta differenzazione nelle colorazioni, ora si nota tutta la differenziazione nella foresta
+plotRGB(l2011, r=3, g=4, b=2, stretch="hist")
+# esercizio: build a multiframe (insieme di più immagini) with visible RGB 
+# (linear stretch) on top of false colours 
+# (histogram stretch)
+par(mfrow=c(2,1))
+plotRGB(l2011, r=3, g=2, b=1, stretch="lin")
+plotRGB(l2011, r=3, g=4, b=2, stretch="hist")
+
+# ora proviamo a caricare la foto del 1988 facedno la stessa operazione eseguita per caricare la foto l2011
+l1988 <- brick ("p224r63_1988.grd")
+plot(l1988)
+# facciamo un multiframe anche per il 1988
+par (mfrow=c(2,1))
+plotRGB(l1988, r=4, g=3, b=2, stretch="lin")
+plotRGB(l2011, r=4, g=3, b=2, stretch="lin")
