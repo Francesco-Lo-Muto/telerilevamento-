@@ -7,7 +7,7 @@ setwd("C:/lab/")
 
 import the first file -> defor1_1.jpg -> give it the name l1992
 
-l1992 <- brick("deror_1.jpg")
+l1992 <- brick("defor1_.jpg")
 
 # plottiamo la foto per capire quali bande ci sono
 plotRGB(l1992, r=1, g=2, b=3, stretch= "lin")
@@ -17,7 +17,7 @@ nel rosso c'è una banda dove riflette molto quindi l'infrarosso vicino (la band
 # layer 3= green
 
 # facciamo la stessa operazione per la seconda: import the second file -> defor2_.jpg -> give it the name l2006
-l2006 <- brick("deror_2.jpg")
+l2006 <- brick("defor2_.jpg")
 plotRGB(l2006, r=1, g=2, b=3, stretch= "lin")
 excercise: plot in a multiframe the two images
 
