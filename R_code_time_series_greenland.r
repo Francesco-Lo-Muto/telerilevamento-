@@ -43,4 +43,40 @@ plot(tgr[[1]], col=cl)
 plotRGB(tgr, r=1, g=2, b=3, stretch="lin")
 plotRGB(tgr, r=4, g=3, b=2, stretch="lin")
 plotRGB(tgr, r=1, g=2, b=4, stretch="lin")
-#
+
+# expamle 2: NO2 decrease during the lockdown period
+# setwd("C:/lab/en") # Windows
+# importiamo il primo dato 
+en01 <- raster ("EN_0001.png")
+# plottiamo il nostro dato con una nuova palette
+cl <- colorRampPalette(c('red','orange','yellow'))(100)
+plot(en01, col=cl)
+# importiamo il secondo set e importiamo il 13°
+en13 <- raster("EN_0013.png")
+plot(en13, col=cl)
+# let's import the whole set (altogether!)
+# excercise: import the whole as in the greenlan example
+# by the following steps: list.files, lapply, stack
+rlist <- list.files(pattern="EN")
+rlist
+# voglio applicare alla funzione rlist la funziona rster e lo faccio con lapply
+list_rast <- lapply(rlist, raster)
+list_rast
+# si fa lo stack, un pacchetto di pezzi (di vettori o immagini ecc) da un dataframe o nel notro caso uno stack di immagini
+EN_stack <- stack(list_rast)
+EN_stack
+# ora plotto i dati con la colorRampPalette
+cl <- colorRampPalette(c('red','orange','yellow'))(100)
+plot(EN_stack, col=cl)
+# exercise: plot EN01 besides EN13
+par(mfrow=c(1,2))
+plot(en[[1]], col=cl)
+plot(en[[3]], col=cl)
+# or 
+en113 <- stack(en[[1]], en[[3]])
+plot(en113, col=cl)
+# fare l idfferenza sll'NO2 di azono nella 1 e nella 13
+# let's make the difference:
+difen <- en[[1]]- en[[13]]
+cldif <- colorRampPalette(c('blue','white','red'))(100) #
+plot(difen, col=cldif)
