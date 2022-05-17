@@ -12,11 +12,11 @@ l2011 <- brick ("p224r63_2011.grd")
 # I plot my first picture by using plot function
 plot(l2011)
 
-# colorRampPalette () # funzione che serve per creare una scala
-# i<- colorRampPalette (c("black", "grey", "light grey")) (100)
+# colorRampPalette () # it's a function that creates a colour scale
+i <- colorRampPalette (c("black", "grey", "light grey")) (100)
 
-# u <- c (5, 6, 10, 20, 29) # sono una serie di caratteri e li indico con una c, faccio la stessa cosa con la funzione colorRampPalette
-# i <- colorRampPalette(c("black", "grey", "light grey")) (100)
+# u <- c(5, 6, 10, 20, 29) # this is an array made through c function, the same thing with colorRampPalette function
+i <- colorRampPalette(c("black", "grey", "light grey")) (100)
 
 cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
 plot(l2011, col=cl)
