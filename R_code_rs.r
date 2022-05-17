@@ -22,13 +22,13 @@ cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
 plot(l2011, col=cl)
 
 # Landsat ETM+
-# b1 = blu
-# b2 = verde
-# b3 = rosso
-# b4 = = infrarosso vicino NIR
-# plottiamo la banda del blu, abbiamo vari modi per falro - B1_sre
+# b1 = blue
+# b2 = green
+# b3 = red
+# b4 = = near infrared NIR
+# I plot the blue band (B1_sre)
 plot (l2011$B1_sre)
-#per legare le bande a un immagine satellitare o altre cose usiamo il dollaro per legare insime le cose
+# to tie the bands to a satellite images or tie objects together I can use dollar symbol
 # altro modo per fare lo stesso procedimento, si ripete plot ma invece di dare il nome si prende il primo elemento ovvero la banda del blu
 
 # concetto di elemtno, una lista di dati. in r gli elemtni si racchiudono in doppia parentesi quandra, elementi allintenro delnostro datased dell imagine satellitare.
