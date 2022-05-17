@@ -32,7 +32,7 @@ plot (l2011$B1_sre)
 # another way to do the same is writing the position of the elements. each number matches a colour band, in this case the blue band matches the first element "[[1]]"
 # the element is a list of data. The elements in R, are enclosed in double square brackets, for example "[[3]], [[1]]".
 plot (l2011[[1]])
-# the two methods are the same, but there are pros and cons
+# the two methods are the same, but there are pros and cons. the advantage of writing the name is that i can see what I'm plotting
 # banda con nuova legenda
 plot (l2011[[1]])
 cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
