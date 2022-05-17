@@ -29,11 +29,10 @@ plot(l2011, col=cl)
 # I plot the blue band (B1_sre)
 plot (l2011$B1_sre)
 # to tie the bands to a satellite images or tie objects together I can use dollar symbol
-# altro modo per fare lo stesso procedimento, si ripete plot ma invece di dare il nome si prende il primo elemento ovvero la banda del blu
-
-# concetto di elemtno, una lista di dati. in r gli elemtni si racchiudono in doppia parentesi quandra, elementi allintenro delnostro datased dell imagine satellitare.
+# another way to do the same is writing the position of the elements. each number matches a colour band, in this case the blue band matches the first element "[[1]]"
+# the element is a list of data. The elements in R, are enclosed in double square brackets, for example "[[3]], [[1]]".
 plot (l2011[[1]])
-# secondo modo per plottre la prima banda ovvero la banda del blu. i 2 metodi sono ugaali ma ci osno dei pro e i contro ma sono la stessa cosa 
+# the two methods are the same, but there are pros and cons
 # banda con nuova legenda
 plot (l2011[[1]])
 cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
