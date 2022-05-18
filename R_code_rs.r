@@ -84,9 +84,9 @@ plot(l2011$B3_sre, col=clr)
 clnir <- colorRampPalette(c("red", "orange", "yellow")) (100)
 plot(l2011$B4_sre, col=clnir)
 
-# installiamo il pacchetto RStoolbox
+# install RStoolbox package
 install.packages("RStoolbox")
-  # plot of l2011 in the NIR channel (dove la vegetazione ha un'alta riflettanza)
+# plot of l2011 in the NIR channel (here vegetation has high riflectance)
 clnir <- colorRampPalette(c("red", "orange", "yellow")) (100)
 plot(l2011$B4_sre, col=clnir)
 # oppure posso plottare in un altro modo:
