@@ -33,47 +33,44 @@ plot (l2011$B1_sre)
 # the element is a list of data. The elements in R, are enclosed in double square brackets, for example "[[3]], [[1]]".
 plot (l2011[[1]])
 # the two methods are the same, but there are pros and cons. the advantage of writing the name is that i can see what I'm plotting
-# banda con nuova legenda
 plot (l2011[[1]])
 cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
 plot (l2011$B1_sre, col= cl)
 # plot b1 from dark blue to blue to light blue
 clb <- colorRampPalette(c("darkblue", "blue", "light blue")) (100)
 plot (l2011$B1_sre, col= clb)
-# abbiamo riplottato tutto con la scala del blu, rinomincando cl in clb per indicare che si tratta di una scala di colori in blu. 
-# si può esportare nella carella lab un file in pdf utilizzando la funzione pdf e nominando il file.pdf e le virgolette pe uscire da r, per choiudere le cuciture relazionati ai gravici in r si usa una funzione chimaata dev.off
+# # plot b1 with a blue scale, I renamed cl in clb to indicate that is it a blue scale. 
+# I can export a pdf in a lab folder through pdf function, for example "file.pdf". I will use double quotes to indicate that I am exiting from R
 pdf("banda1.pdf")
 plot (l2011$B1_sre, col= clb)
-# dev.off chiude la finestra, se io apro una finestra vortuale come pdf la choudo con questa funzione
+# to close a virtual window i can use dev.off() function. In this case i can close my pdf file with this function.
 dev.off()
-# se volessi cambiare cartella di salvataggio cabio il path
-# con la funzione png ottengo la stessa ma con una risoluzoone minore
+# I will change the path if I want to save the file elsewhere
+# Through png function i will get the same result but with a lower resolution
 png("banda1.pdf")
 plot (l2011$B1_sre, col= clb)
 dev.off()
-# se vogliamo esportare un immagine e non il plot usiamo la funzione writeRaster in cui si esporta tutto il dataset
-# plottiamo più immagini insieme, plottando insieme la banda del blu e del verde ma prima plottiamo la banda del verde (b2) con una nuova scala di colori.
+# to export full dataset I can use writeRaster fuction.
+# I can plot more bands together but first I will plot the green band (b2) in a new colours scale.
+# plot b2 from darkgreen to green to light green
 clg <- colorRampPalette(c("darkgreen", "green", "light green")) (100)
 plot (l2011$B2_sre, col= clg)
-# ora mettiamo insieme le due bande del blu e del verde (b1 e b2)
-# utiliazziamo la funzione par per definire il multiframe
+# now I can tie the blue(b1) and the green(b2) band together
+# to define a multiframe i can use par fuction
 par (mfrow= c(1,2))
 plot (l2011$B1_sre, col= clb)
 plot (l2011$B2_sre, col= clg)
-# per chiudere la finestra non utilizzando il mouse si utilizza la funzione dev.off()
-# per esportare un pdf del mio multiframe
-# export multiframe plot
+# to close the window without using the mouse I will use dev.off() function
+# through pdf function I can export multiframe plot
 pdf("multiframe.pdf")
 par(mfrow=c(1,2))
 plot(l2011$B1_sre, col=clb)
 plot(l2011$B2_sre, col=clg)
 dev.off()
-# esercizio: revert the multiframe ovvero vogliamo fare un plot con il blu sopra e il verde sotto quindi ragionando in termini di righe e colonne nel par quindi in questo caso par(mfrow=c(2,1)).
+# esercizio: revert the multiframe. In this case: par(mfrow=c(2,1)).
 par(mfrow=c(2,1))
 plot(l2011$B1_sre, col=clb)
 plot(l2011$B2_sre, col=clg)
-# applichiamo la stessa funzione utilizzando tutte le 4 bande
-
 # let's plot the first four bands
 par(mfrow=c(2,2))
 # blue
