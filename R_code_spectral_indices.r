@@ -1,54 +1,50 @@
 library(raster)
 install.packages("rgdal")
 library(rgdal)
-# abbiamo richiamato la libreria raster che ci serve
-# sttiamo la wd per windows nel mio caso
+# recall library raster
+# setting my windows working directory
 setwd("C:/lab/")
-
-import the first file -> defor1_1.jpg -> give it the name l1992
-
+# import the first file -> defor1_1.jpg -> give it the name l1992
 l1992 <- brick("defor1_.jpg")
-
-# plottiamo la foto per capire quali bande ci sono
+# plottiamo la foto per capire quali bande ci sono. plot the image to understand what bands are contained
 plotRGB(l1992, r=1, g=2, b=3, stretch= "lin")
-nel rosso c'è una banda dove riflette molto quindi l'infrarosso vicino (la banda # 1 è la NIR)
+# the vegetation reflects the infrared very much, the first band is NIR
 # layer 1= NIR
 # layer 2= red
 # layer 3= green
 
-# facciamo la stessa operazione per la seconda: import the second file -> defor2_.jpg -> give it the name l2006
+# I replay the same procedure to import the second file -> defor2_.jpg -> give it the name l2006. 
 l2006 <- brick("defor2_.jpg")
 plotRGB(l2006, r=1, g=2, b=3, stretch= "lin")
-excercise: plot in a multiframe the two images
+# excercise: plot in a multiframe the two images
 
 par(mfrow=c(2,1))
 plotRGB(l1992, r=1, g=2, b=3, stretch="lin")
 plotRGB(l2006, r=1, g=2, b=3, stretch="lin")
 
-# DVI differecne vegetation index per i due anni
+# DVI differecne vegetation index, is the difference between near infrared and red
 dvi1992 = l1992 [[1]] - l1992 [[2]]
 
-# plottiamo il dato del 1992
+# plot 1992 image
 dvi1992
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) # specifying a color scheme
 plot (dvi1992, col =cl)
-
+# same procedure for 2006
 dvi2006 = l2006[[1]] - l2006[[2]]
 
-# plottiamo il dato del 2006
+# plot 2006 image
 dvi2006
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) # specifying a color scheme
 plot (dvi2006, col =cl)
-# altro metodo per calcolare il dvi invece di usare gli elemnti potremmo usare i nomi.
-
-# NDVIsi fa per standartizzare l'indice
+# another way to calculate dvi index is by name
+# NDVI is done to standardize the index
 # range DVI (8 bit): -255 a 255                                                                      
 # range NDVI (8 bit): -1 a 1 
-# in un immagine a 8 bit ho 256 valori mentre con una a 16 bit ne ho 65535 
+# in an 8 bit image I have 256 values while in a 16 bit image I have 65535
 # range DVI (16 bit): -65535 a 65535                                                                       
 # range NDVI (16 bit) : - 1 a 1
-# il range NDVI in entrambe è uguale quindi io avendo lo stesso valore posso fare confronti e può essere usato con immagini con risoluzione radioometrica differente. ( risoluzone radiometrica ovvero quanti bit ci sono dispobibili a dispozione all'intenro di un immagine)
-# carichiamo con la funzione brick ( che carica un intero blocco di bande) la foto del 1992                                                                        
+# in both photos NDVI range is the same so if I have the same value I can make comparisons. It can be used with images with different radiometric resolution (how many bits are available within an image).
+# upload through brick function (which loads a whole block of bands) the 1992 photo                                                                        
 l1992 <- brick("defor1_.jpg")     
 # ora carico la foto del 2006 con lo stesso procedimento
 l2006 <- brick("defor2_.jpg")                                                                        
