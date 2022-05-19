@@ -89,34 +89,34 @@ install.packages("RStoolbox")
 # plot of l2011 in the NIR channel (here vegetation has high riflectance)
 clnir <- colorRampPalette(c("red", "orange", "yellow")) (100)
 plot(l2011$B4_sre, col=clnir)
-# oppure posso plottare in un altro modo:
+# another way to plot:
 plot (l2011[[4]])
-# quando plotto un immagine satellitare posso utilizzare solo tre bande per volta (in questo caso RGB)
-# per costruire un immagine satellitare montiamo le tre bande del rosso verse e blu attraverso la funzione plotRGB
+# when I plot a satellite image i can only use three images at a time.
+# to build a satellite image I have to mount the three bands (red, green, blue) through plotRGB function
 plotRGB(l2011, r=3, g=2, b=1, stretch="lin")
-# abboamo ottenuto un immagine a colori naturali
-# ora utilizziamo l'infrarosso naturale ma potendo solo utilizzare solo 3 bande insiem metteremo al posto del 3 il 4 al posto del 2 il 3 e al posto del 1 il 2, la banda del blu resta fuori e posso utilizzare la banda dell infrarosso
+# I got a natural color image
+# Now I use natural infrared but i can utilize only three band at a time. I will put in the place of red band the natural infrared, in the place of green band the red band and in the place of blue band the green band.
 plotRGB(l2011, r=4, g=3, b=2, stretch="lin")
-# cosi avremo non i colori che vede l'uomo ma tutto quello che rilfette all'infrarosso vicino diventerà di colore rosso.
-# tutto il rosso è vegetazione
-#ora porvo a spostare l'infrarosso nella componente green
+# I dont'have the colours that a man usually see but everything that reflects in the near infrared will become red
+# everything that is red is vegetation
+# I try to move the infrared in the place of green
 plotRGB(l2011, r=3, g=4, b=2, stretch="lin")
-# tutto quello che rifletterà nell'infrarosso vicino diventrà verde fluorescente
-#provo a passare l'infrarosso anche nel blu e la vegetazione diventerà blu
+# everything reflects near infrared will become fluorescent green
+# in this case I try to move the infrared in the place of blue and vegetation will become blue
  plotRGB(l2011, r=3, g=2, b=4, stretch="lin")
-# usiamo hist invece di lin è notiamo un alta differenzazione nelle colorazioni, ora si nota tutta la differenziazione nella foresta
+# I use hist in the place of lin to note an high differentation in the forest
 plotRGB(l2011, r=3, g=4, b=2, stretch="hist")
-# esercizio: build a multiframe (insieme di più immagini) with visible RGB 
+# exercise: build a multiframe with visible RGB 
 # (linear stretch) on top of false colours 
 # (histogram stretch)
 par(mfrow=c(2,1))
 plotRGB(l2011, r=3, g=2, b=1, stretch="lin")
 plotRGB(l2011, r=3, g=4, b=2, stretch="hist")
 
-# ora proviamo a caricare la foto del 1988 facedno la stessa operazione eseguita per caricare la foto l2011
+# now I upload the 1988 photo using the same procedure performed to upload 2011 photo
 l1988 <- brick ("p224r63_1988.grd")
 plot(l1988)
-# facciamo un multiframe anche per il 1988
+# build multiframe for 1988
 par (mfrow=c(2,1))
 plotRGB(l1988, r=4, g=3, b=2, stretch="lin")
 plotRGB(l2011, r=4, g=3, b=2, stretch="lin")
