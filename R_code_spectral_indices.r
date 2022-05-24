@@ -65,7 +65,14 @@ ndvi2006 = dvi2006 / (l2006[[1]] + l2006[[2]])
 par(mfrow=c(2,1))
 plot (ndvi2006, col =cl)   
 plot (ndvi1992, col =cl)                                                                         
-# automatic spectrale indices by the spectralIndices 
+# DVI difference between 1992-2006
+dvi_dif = dvi1992 - dvi2006
+cld <- ColorRampPalette(c('blue', 'white', 'red'))(100)
+# I use dev.off() to close previous window
+dev.off()
+# plot dvi_diff with new ColorRampPaeltte
+plot (dvi_dif, col =cld)
+
 library (RStoolbox)                                                                        
 si1992 <- spectralIndices(l1992, green=3, red=2, nir=1)
 plot(si1992,col=cl)                                                                      
