@@ -4,28 +4,28 @@ library (raster)
 
 # setwd("C:/lab/greenland") 
 
-# importiamo i dati prima con l'operazione classica e poi con un metodo più velcoe
-# voglio importare un singolo strato tramite la funzione raster, la funzione che importa un layer singolo
+# I import the data with classic operation and then with a faster method.
+# I want to import a single layer by raster function
 
 lst2000 <- raster("lst_2000.tif")
 lst2000
-# la plottiamo
+# plot lst2000
 plot(lst2000)
 # exercice: import all the data 
 lst2005 <- raster("lst_2005.tif")
 lst2010 <- raster("lst_2010.tif")
 lst2015 <- raster("lst_2015.tif")
-# ci creiamo una colorRamPalette
+# I can make a new colourRampPalette
 cl <- colorRampPalette(c("blue","light blue","pink","red"))(100)
-# facciamo un multifrme con quattro dati
+# I make a multiframe for all four layers
 par(mfrow=c(2,2))
 plot(lst2000, col=cl)
 plot(lst2005, col=cl)
 plot(lst2010, col=cl)
 plot(lst2015, col=cl)
-# vediamo come importare questa funzione tutta insieme con la funzione lapply
-# creo la mia lista di file (importante lavorare con gli oggetti) e poi lapply applicherà la funzione raster a tutti i file
-# list.files (crea una lista di file)
+# through lapply function I can import everything together
+# I create my list files (in this case is important to work with objects). After that lapply function will apply the raster function to all file
+# list.files (create a files list)
 # import the whole set altogether
 rlist <- list.files (pattern="lst")
 # ora applico raster a questa lista di files
