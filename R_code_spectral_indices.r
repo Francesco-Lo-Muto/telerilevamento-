@@ -4,6 +4,7 @@ library(rgdal)
 # recall library raster
 # setting my windows working directory
 setwd("C:/lab/")
+
 # import the first file -> defor1_1.jpg -> give it the name l1992
 l1992 <- brick("defor1_.jpg")
 # plottiamo la foto per capire quali bande ci sono. plot the image to understand what bands are contained
@@ -36,7 +37,16 @@ dvi2006 = l2006[[1]] - l2006[[2]]
 dvi2006
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) # specifying a color scheme
 plot (dvi2006, col =cl)
+
+# DVI difference between 1992-2006
+dvi_dif = dvi1992 - dvi2006
+cld <- ColorRampPalette(c('blue', 'white', 'red'))(100)
+# I use dev.off() to close previous window
+dev.off()
+# plot dvi_diff with new ColorRampPaeltte
+plot (dvi_dif, col =cld)
 # another way to calculate dvi index is by name
+
 # NDVI is done to standardize the index
 # range DVI (8 bit): -255 a 255                                                                      
 # range NDVI (8 bit): -1 a 1 
@@ -46,38 +56,36 @@ plot (dvi2006, col =cl)
 # in both photos NDVI range is the same so if I have the same value I can make comparisons. It can be used with images with different radiometric resolution (how many bits are available within an image).
 # upload through brick function (which loads a whole block of bands) the 1992 photo                                                                        
 l1992 <- brick("defor1_.jpg")     
-# ora carico la foto del 2006 con lo stesso procedimento
+# with the same procedure I upload the 2006 photo
 l2006 <- brick("defor2_.jpg")                                                                        
-# per calcolare il DVI o uso i nomi o uso gli elemento all'interno
+# to calcolate DVI index I can use name o elements
 dvi1992 = l1992[[1]] - l1992[[2]]
-# mi calcolo l'NDVI:
-ndvi1992 = dvi1992 / (l1992[[1]] + l1992[[2]])                                                                        
+# now I calculate NDVI index:
+ndvi1992 = dvi1992 / (l1992[[1]] + l1992[[2]])
+# or
+ndvi1992 = (l1992[[1]] - l1992[[2]] / (l1992[[1]] + l1992[[2]])
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
+# plot ndvi1992            
 plot (ndvi1992, col =cl) 
-# multiframe con il plotRGB dell'immagine sopra
-# e l'ndvi sotto
+# Multiframe with plotRGB on top of the NDVI image
 par(mfrow=c(2,1))
 plotRGB(l1992, r=1, g=2, b=3, stretch="lin") 
 plot (ndvi1992, col =cl)                                                                         
-# eseguo lo stesso procedimento per la foto del 2006                                                                        
+# the same procedure to 2006 photo                                                                      
 dvi2006 = l2006[[1]] - l2006[[2]]                                                                   
-ndvi2006 = dvi2006 / (l2006[[1]] + l2006[[2]])                                                                                                   
+ndvi2006 = dvi2006 / (l2006[[1]] + l2006[[2]])   
+# Multiframe with NDVI1992 on top of the NDVI2006 image            
 par(mfrow=c(2,1))
 plot (ndvi2006, col =cl)   
 plot (ndvi1992, col =cl)                                                                         
-# DVI difference between 1992-2006
-dvi_dif = dvi1992 - dvi2006
-cld <- ColorRampPalette(c('blue', 'white', 'red'))(100)
-# I use dev.off() to close previous window
-dev.off()
-# plot dvi_diff with new ColorRampPaeltte
-plot (dvi_dif, col =cld)
 
-library (RStoolbox)                                                                        
+library (RStoolbox)      
+# Inside RStoolbox there is an important function: spectralIndices 
+# SpectralIndices: Calculate a suite of multispectral indices such as NDVI, SAVI etc.            
 si1992 <- spectralIndices(l1992, green=3, red=2, nir=1)
 plot(si1992,col=cl)                                                                      
-# ci da tutti gli indici possibili calcolabili per un immagine.                                                                     
-# rifacciamo la stessa operazione per il 2006
+# it gives us all possible computable indices for an image.                                                                     
+# same procedure to 2006
 si2006 <- spectralIndices(l1992, green=3, red=2, nir=1)
 plot(si2006,col=cl)                                                                        
 install.packages("rasterdiv")                                                                        
