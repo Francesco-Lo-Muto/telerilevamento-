@@ -71,11 +71,35 @@ plot(EN_stack, col=cl)
 # exercise: plot EN01 besides EN13
 par(mfrow=c(1,2))
 plot(en[[1]], col=cl)
-plot(en[[3]], col=cl)
+plot(en[[13]], col=cl)
 # or 
-en113 <- stack(en[[1]], en[[3]])
+en113 <- stack(en[[1]], en[[13]])
 plot(en113, col=cl)
 # let's make the difference:
 difen <- en[[1]]- en[[13]]
-cldif <- colorRampPalette(c('blue','white','red'))(100) #
+cldif <- colorRampPalette(c('blue','white','red'))(100) 
 plot(difen, col=cldif)
+# plotRGB of three files together
+plotRGB(en, r=1, g=7, b=13, stretch="lin")
+plotRGB(en, r=1, g=7, b=13, stretch="hist")
+# ciò che è rosso è legato a gennaio
+# ciò che è verde è legato a febbraio
+# ciò che è blu è legato a marzo
+
+library(raster)
+library(RStoolbox)
+# setting working directory for winwows
+setwd("C:/lab/") 
+# import the satellite image
+so <- brick("Solar_Orbiter_s_first_views_of_the_Sun_pillars.jpg")
+so
+# I get a variety of information
+plotRGB(so, 1, 2, 3, stretch="lin")
+plotRGB(so, 1, 2, 3, stretch="hist")
+
+# Classifying the solar data 
+soc <- unsuperClass(so, nClasses=3)
+soc
+cl <- colorRampPalette(c('yellow','black','red'))(100)
+plot(soc$map, col=cl)
+ 
