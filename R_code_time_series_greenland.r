@@ -36,7 +36,7 @@ tgr <- stack (import)
 plot (tgr, col=cl)
 # I got the same result but without multiframe
 # If I plot a single band
-plot ( tgr$lst2000, col = cl )
+plot (tgr$lst2000, col=cl)
 # I can use the element or name
 plot(tgr[[1]], col=cl)
 # I can build an RGB file based on the layers of our stack
@@ -51,7 +51,7 @@ en01 <- raster ("EN_0001.png")
 # plot data with a new colourRampPalette
 cl <- colorRampPalette(c('red','orange','yellow'))(100)
 plot(en01, col=cl)
-# importiamo il secondo set e importiamo il 13°
+# import thirteenth set
 en13 <- raster("EN_0013.png")
 plot(en13, col=cl)
 # let's import the whole set (altogether!)
