@@ -28,27 +28,27 @@ plot(lst2015, col=cl)
 # list.files (create a files list)
 # import the whole set altogether
 rlist <- list.files (pattern="lst")
-# ora applico raster a questa lista di files
+# now I use raster function in this files list
 import <- lapply(rlist, raster)
-# si potrebbe fare lo stack ovvero predere i layer e metterle in un singolo file
+# I can use stack function to take the layers and put them in a single file
 tgr <- stack (import)
-# invece di fare il multiframe, faccio una lista di file, mi applico la funzione lapply che mi applica la funzione raster alla lista e poi faccio lo stack
+# Instead to use multiframe I can apply lapply funtcion. This funtion applies raster function to the files list
 plot (tgr, col=cl)
-# ho lo stesso plot di prima ma senza passare dal multiframeù
-# se voglio plottare una singola banda 
+# I got the same result but without multiframe
+# If I plot a single band
 plot ( tgr$lst2000, col = cl )
-# ho plotto il nome o l'elemento
+# I can use the element or name
 plot(tgr[[1]], col=cl)
-# posso fare un rgb basandomi sui layer del nostro stack
+# I can build an RGB file based on the layers of our stack
 plotRGB(tgr, r=1, g=2, b=3, stretch="lin")
 plotRGB(tgr, r=4, g=3, b=2, stretch="lin")
 plotRGB(tgr, r=1, g=2, b=4, stretch="lin")
 
 # expamle 2: NO2 decrease during the lockdown period
 # setwd("C:/lab/en") # Windows
-# importiamo il primo dato 
+# import first data 
 en01 <- raster ("EN_0001.png")
-# plottiamo il nostro dato con una nuova palette
+# plot data with a new colourRampPalette
 cl <- colorRampPalette(c('red','orange','yellow'))(100)
 plot(en01, col=cl)
 # importiamo il secondo set e importiamo il 13°
@@ -59,13 +59,13 @@ plot(en13, col=cl)
 # by the following steps: list.files, lapply, stack
 rlist <- list.files(pattern="EN")
 rlist
-# voglio applicare alla funzione rlist la funziona rster e lo faccio con lapply
+# through lapply command I apply raster function to the rlist functionn
 list_rast <- lapply(rlist, raster)
 list_rast
-# si fa lo stack, un pacchetto di pezzi (di vettori o immagini ecc) da un dataframe o nel notro caso uno stack di immagini
+# let's make the stack
 EN_stack <- stack(list_rast)
 EN_stack
-# ora plotto i dati con la colorRampPalette
+# now I plot data with a colourRampPalette
 cl <- colorRampPalette(c('red','orange','yellow'))(100)
 plot(EN_stack, col=cl)
 # exercise: plot EN01 besides EN13
@@ -75,7 +75,6 @@ plot(en[[3]], col=cl)
 # or 
 en113 <- stack(en[[1]], en[[3]])
 plot(en113, col=cl)
-# fare l idfferenza sll'NO2 di azono nella 1 e nella 13
 # let's make the difference:
 difen <- en[[1]]- en[[13]]
 cldif <- colorRampPalette(c('blue','white','red'))(100) #
