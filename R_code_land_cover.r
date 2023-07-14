@@ -1,0 +1,82 @@
+# code for generating land cover maps from satellite imagery
+
+library(raster)
+library(RStoolbox) #  for classification
+# install.packages("ggplot2")
+# install.packages("patchwork")
+library(ggplot2)
+library(patchwork)
+
+setwd("C:/lab/") # Windows
+
+l92 <- brick("defor1_.jpg") plottiamo l'immafine satellitare e usiamo direttamente la funzone brick
+plotRGB (l92, 1, 2, 3, stretch="lin")
+
+# Exercise: import defor2 and plot in a single window
+l06 <- brick ("defor2_.jpg")
+plotRGB (l06, 1, 2, 3, stretch="lin")
+par(mfrow=c(2,1))
+plotRGB (l92, 1, 2, 3, stretch="lin")
+plotRGB (l06, 1, 2, 3, stretch="lin")
+
+utilizziamo la funzione ggRGB per fare multiframe in modo più veloce rispetto a parmfrow
+# making a simple multifrme with ggplot2
+ggRGB(l92, 1, 2, 3, stretch="lin") # sugli assi x e y ho le coordinate
+ggRGB(l06, 1, 2, 3, stretch="lin")
+# traminte il pacchetto pachtwork io posso unire le 2 immagini
+# associamo i 2 plot ad un nome il primo lo chiamo p1 e il seocndo p2
+p1 <- ggRGB(l92, 1, 2, 3, stretch="lin") 
+p2 <- ggRGB(l06, 1, 2, 3, stretch="lin")
+p1+p2 li mette insime
+p1/p2 li ho uno sopra e uno sotto
+# unsuperClass function , per classificare le immagini
+l92c <- unsuperClass (l92, nClasses=2)
+l92c
+unsuperClass results
+
+*************** Model ******************
+$model
+K-means clustering with 2 clusters of sizes 8955, 1045
+
+Cluster centroids:
+  defor1_.1 defor1_.2 defor1_.3
+1  197.5539  22.07214  36.31692
+2  202.4995 154.84306 149.96077
+
+Within cluster sum of squares by cluster:
+[1] 10486659  7014305
+
+*************** Map ******************
+$map
+class      : RasterLayer 
+dimensions : 478, 714, 341292  (nrow, ncol, ncell)
+resolution : 1, 1  (x, y)
+extent     : 0, 714, 0, 478  (xmin, xmax, ymin, ymax)
+crs        : NA 
+source     : memory
+names      : class 
+values     : 1, 2  (min, max)
+plot(l92c$map) #let's plot
+# class 1: forest 
+# class 2: agricultural areas (+water)
+# Exercise: classify the Landsat image from 2006
+l06c <- unsuperClass(l06, nClasses=2)
+l06c
+plot(l06c$map) #let's plot
+# class 1: forest 
+# class 2: agricultural areas (+water)
+# fre function mi genera delle tabelle di frequena, mi dice quanti pixel ci sono 
+freq(l92c$map)
+ value  count
+[1,]     1 306053
+[2,]     2  35239
+# class 1: 306053 pixels (forest)
+# class 2: 36079 pixels (agricultural areas)
+freq(l06c$map)
+ value  count
+[1,]     1 177630
+[2,]     2 165096
+# class 1: 177630 pixels (forest)
+# class 2: 165096 pixels (agricultural areas)
+
+
