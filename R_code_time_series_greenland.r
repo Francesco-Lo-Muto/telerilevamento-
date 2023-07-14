@@ -82,9 +82,9 @@ plot(difen, col=cldif)
 # plotRGB of three files together
 plotRGB(en, r=1, g=7, b=13, stretch="lin")
 plotRGB(en, r=1, g=7, b=13, stretch="hist")
-# ciò che è rosso è legato a gennaio
-# ciò che è verde è legato a febbraio
-# ciò che è blu è legato a marzo
+# red color is associated with January
+# green color is associated with February
+# blue is associated with March
 
 library(raster)
 library(RStoolbox)
