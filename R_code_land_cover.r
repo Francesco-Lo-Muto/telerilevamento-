@@ -93,6 +93,47 @@ freq(l06c$map)
 [2,]     2 165096
 # class 1: 177630 pixels (forest)
 # class 2: 165096 pixels (agricultural areas)
+# percentages 2006
+tot_06 <- 342726
+percent_forest_06 <- 177941 * 100 / tot_06
+percent_forest_06
+percent_agr_06 <- 100 - percent_forest_06
+
+# percent_forest_06: 51.91932
+# percent_agr_06: 48.08068
+
+# FINAL DATA:
+# percent_forest_92: 89.67482
+# percent_agr_92: 10.32518
+# percent_forest_06: 51.91932
+# percent_agr_06: 48.08068
+# dataframe è una tabella
+# Let's built a dataframe with our data
+# Columns (fields)
+class <- c("Forest", "Agriculture")
+percent_1992 <- c(89.67482, 10.32518)
+percent_2006 <- c(51.91932, 48.08068)
+multitemporal <- data.frame(class, percent_1992, percent_2006)
+# 1992
+ggplot(multitemporal, aes(x=class, y=percent_1992, color=class))+
+geom_bar(stat="identity", fill="white")
+
+# Excercise: make the same graph for 2006
+
+ggplot(multitemporal, aes(x=class, y=percent_2006, color=class))+
+geom_bar(stat="identity", fill="white")
+
+# to make a pdf:
+pdf("percentages_1992")
+ggplot(multitemporal, aes(x=class, y=percent_1992, color=class))+
+geom_bar(stat="identity", fill="white")
+dev.off()
+
+pdf("percentages_2006")
+ggplot(multitemporal, aes(x=class, y=percent_2006, color=class))+
+geom_bar(stat="identity", fill="white")
+dev.off()
+
 
 
 
