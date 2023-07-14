@@ -71,12 +71,28 @@ freq(l92c$map)
 [1,]     1 306053
 [2,]     2  35239
 # class 1: 306053 pixels (forest)
-# class 2: 36079 pixels (agricultural areas)
+# class 2: 35239 pixels (agricultural areas)
+tot92 <- 341292
+# proportion of classes
+prop_forest_92 <- 306053 / tot92
+
+# percent of classes
+perc_forest_92 <- 306053 * 100 / tot92
+
+# Exercise: calculate the percentage of agricultural areas in 1992
+# method 1:
+perc_agr_92 <- 100 - perc_forest_92
+# method 2: 
+perc_agr_92 <- 35239 * 100 / tot92
+# percent_forest_92:  89.67482
+# percent_agr_92: 10.32518
+
 freq(l06c$map)
  value  count
 [1,]     1 177630
 [2,]     2 165096
 # class 1: 177630 pixels (forest)
 # class 2: 165096 pixels (agricultural areas)
+
 
 
