@@ -22,3 +22,4 @@ max values :                          65535,                          65535,    
 
 plot(p1)
 plotRGB(p1, 3, 2, 1, stretch="lin") 
+pdf("p1.pdf")
