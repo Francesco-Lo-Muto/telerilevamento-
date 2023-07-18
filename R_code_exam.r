@@ -120,8 +120,8 @@ plot(dvip1, col=cl)
 png("dvip2.png")
 plot(dvip2, col=cl)
 
-png("dvip2.png")
-plot(dvip2, col=cl)
+png("dvip3.png")
+plot(dvip3, col=cl)
 
 
 
