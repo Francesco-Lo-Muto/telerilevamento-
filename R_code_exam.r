@@ -55,5 +55,8 @@ png("p3.png")
 plotRGB(p3, 3, 2, 1, stretch="lin") 
 dev.off()
 
+#The Normalized Burn Ratio (NBR)
+
+
 
 
