@@ -106,12 +106,12 @@ plot(dvip1, col=cl)
 dvip2 = p2[[4]] - p2[[3]]      
 dvip2
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
-plot (dvi2017, col=cl)
+plot(dvip2, col=cl)
 
 p3 = p3[[4]] - p3[[3]]      
 dvip3
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
-plot (dvip3, col=cl)
+plot(dvip3, col=cl)
 
 # save image 
 png("dvip1.png")
