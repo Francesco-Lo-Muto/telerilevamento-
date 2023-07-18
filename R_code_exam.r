@@ -23,4 +23,25 @@ max values :                          65535,                          65535,    
 plot(p1)
 png("p1.png")
 plotRGB(p1, 3, 2, 1, stretch="lin") 
+dev.off()
+
+#
+rlist2 <- list.files(pattern="0921")
+import2 <- lapply(rlist2, raster)
+p2 <- stack(import2)
+p2
+
+class      : RasterStack 
+dimensions : 10980, 10980, 120560400, 4  (nrow, ncol, ncell, nlayers)
+resolution : 10, 10  (x, y)
+extent     : 499980, 609780, 4190220, 4300020  (xmin, xmax, ymin, ymax)
+crs        : +proj=utm +zone=33 +datum=WGS84 +units=m +no_defs 
+names      : T33SWC_20210921T094031_B02_10m, T33SWC_20210921T094031_B03_10m, T33SWC_20210921T094031_B04_10m, T33SWC_20210921T094031_B08_10m 
+min values :                              0,                              0,                              0,                              0 
+max values :                          65535,                          65535,                          65535,                          65535 
+
+plot(p2)
+png("p2.png")
+plotRGB(p2, 3, 2, 1, stretch="lin") 
+dev.off()
 
