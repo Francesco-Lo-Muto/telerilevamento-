@@ -102,16 +102,19 @@ values     : -6504, 11452  (min, max)
 
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(dvip1, col=cl) 
+dev.off()
 
 dvip2 = p2[[4]] - p2[[3]]      
 dvip2
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(dvip2, col=cl)
+dev.off()
 
 dvip3 = p3[[4]] - p3[[3]]      
 dvip3
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(dvip3, col=cl)
+dev.off()
 
 # save image 
 png("dvip1.png")
@@ -130,6 +133,7 @@ par(mfrow=c(1,3))
 plot(dvip1, col=cl)	
 plot(dvip2, col=cl)
 plot(dvip3, col=cl)
+dev.off()
 
 
 #save tutti insieme
@@ -142,10 +146,15 @@ plot(dvip3, col=cl)
 #NDVI
 ndvip1 = dvip1 / (p1[[4]] + p1[[3]])
 plot(ndvip1)
+dev.off()
+
 ndvip2 = dvip2 / (p2[[4]] + p2[[3]])
 plot(ndvip2)
+dev.off()
+
 ndvip3 = dvip3 / (p3[[4]] + p3[[3]])
 plot(ndvip3)
+dev.off()
 
 
 # save 
@@ -167,6 +176,7 @@ par(mfrow=c(1,3))
 plot(ndvip1, col=cl)	
 plot(ndvip2, col=cl)
 plot(ndvip3, col=cl)
+dev.off()
 
 #salvo insiem
 png("ndvi_p_all.png")
