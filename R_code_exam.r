@@ -45,3 +45,15 @@ png("p2.png")
 plotRGB(p2, 3, 2, 1, stretch="lin") 
 dev.off()
 
+rlist3 <- list.files(pattern="0713")
+import3 <- lapply(rlist3, raster)
+p3 <- stack(import3)
+p3
+#
+plot(p3)
+png("p3.png")
+plotRGB(p3, 3, 2, 1, stretch="lin") 
+dev.off()
+
+
+
