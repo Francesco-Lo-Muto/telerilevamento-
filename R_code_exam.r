@@ -168,7 +168,7 @@ plot(ndvip1, col=cl)
 plot(ndvip2, col=cl)
 plot(ndvip3, col=cl)
 
-#salvo insieme
+#salvo insiem
 png("ndvi_p_all.png")
 par(mfrow=c(1,3))
 plot(ndvip1, col=cl)	
