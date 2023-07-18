@@ -81,5 +81,8 @@ png("p3.png")
 plotRGB(p3, 4, 3, 2, stretch="lin")
 dev.off()
 
+# DVI
+dvip1 = p1[[4]] - p1[[3]]      
+dvip1
 
 
