@@ -7,7 +7,7 @@ library (raster)
 setwd("C:/lab/") # windows
 
 # through the brick function I can import the image from the downloaded package, then I assign "l2011" name to make subsequent work easier
-l2011 <- brick ("p224r63_2011.grd")
+l2011 <- brick ("p224r63_2011.grd") 
 
 # I plot my first picture by using plot function
 plot(l2011)
