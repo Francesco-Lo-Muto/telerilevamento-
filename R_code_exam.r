@@ -21,6 +21,6 @@ max values :                          65535,                          65535,    
 
 
 plot(p1)
-plotRGB(p1, 3, 2, 1, stretch="lin") 
 png("p1.png")
-jpeg("p1.JPG", 300, 300)
+plotRGB(p1, 3, 2, 1, stretch="lin") 
+
