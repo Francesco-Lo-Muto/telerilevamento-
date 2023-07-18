@@ -90,5 +90,77 @@ dev.off()
 # DVI
 dvip1 = p1[[4]] - p1[[3]]      
 dvip1
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
+plot(dvip1, col=cl) 
+
+dvip2 = p2[[4]] - p2[[3]]      
+dvip2
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
+plot (dvi2017, col=cl)
+
+p3 = p3[[4]] - p3[[3]]      
+dvip3
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
+plot (dvip3, col=cl)
+
+# save image 
+png("dvip1.png")
+plot(dvip1, col=cl)
+
+png("dvip2.png")
+plot(dvip2, col=cl)
+
+png("dvip2.png")
+plot(dvip2, col=cl)
 
 
+
+#
+par(mfrow=c(1,3))
+plot(dvip1, col=cl)	
+plot(dvip2, col=cl)
+plot(dvip3, col=cl)
+
+
+#save tutti insieme
+png("dvi_p_all.png")
+par(mfrow=c(1,3))
+plot(dvip1, col=cl)	
+plot(dvip2, col=cl)
+plot(dvip3, col=cl)
+
+#NDVI
+ndvip1 = dvip1 / (p1[[4]] + p1[[3]])
+plot(ndvip1)
+ndvip2 = dvip2 / (p2[[4]] + p2[[3]])
+plot(ndvip2)
+ndvip3 = dvip3 / (p3[[4]] + p3[[3]])
+plot(ndvip3)
+
+
+# save 
+png("ndvip1.png")
+ndvip1 = dvip1 / (p1[[4]] + p1[[3]])
+plot(ndvip1)
+
+png("ndvip2.png")
+ndvip2 = dvip2 / (p2[[4]] + p2[[3]])
+plot(ndvip2)
+
+png("ndvip3.png")
+ndvip3 = dvip3 / (p3[[4]] + p3[[3]])
+plot(ndvip3)
+
+# plotto isieme
+
+par(mfrow=c(1,3))
+plot(ndvip1, col=cl)	
+plot(ndvip2, col=cl)
+plot(ndvip3, col=cl)
+
+#salvo insieme
+png("ndvi_p_all.png")
+par(mfrow=c(1,3))
+plot(ndvip1, col=cl)	
+plot(ndvip2, col=cl)
+plot(ndvip3, col=cl)
