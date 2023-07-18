@@ -55,8 +55,31 @@ png("p3.png")
 plotRGB(p3, 3, 2, 1, stretch="lin") 
 dev.off()
 
-#The Normalized Burn Ratio (NBR)
+# I plot images all together
+par(mfrow=c(1,3))
+plotRGB(p1, 3, 2, 1, stretch="lin")
+plotRGB(p2, 3, 2, 1, stretch="lin")
+plotRGB(p3, 3, 2, 1, stretch="lin")
+dev.off()
 
+#  difference
+plotRGB(p1, 4, 3, 2, stretch="lin")
+plotRGB(p2, 4, 3, 2, stretch="lin")
+plotRGB(p3, 4, 3, 2, stretch="lin")
+dev.off()
+
+
+# save the images
+
+png("p1.png")
+plotRGB(p1, 4, 3, 2, stretch="lin")
+dev.off()
+png("p2.png")
+plotRGB(p2, 4, 3, 2, stretch="lin")
+dev.off()
+png("p3.png")
+plotRGB(p3, 4, 3, 2, stretch="lin")
+dev.off()
 
 
 
