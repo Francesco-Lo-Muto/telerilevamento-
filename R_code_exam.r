@@ -108,7 +108,7 @@ dvip2
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(dvip2, col=cl)
 
-p3 = p3[[4]] - p3[[3]]      
+dvip3 = p3[[4]] - p3[[3]]      
 dvip3
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(dvip3, col=cl)
