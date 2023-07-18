@@ -63,6 +63,11 @@ plotRGB(p3, 3, 2, 1, stretch="lin")
 dev.off()
 
 #  difference
+plotRGB(p1, 4, 3, 2, stretch="lin")
+plotRGB(p2, 4, 3, 2, stretch="lin")
+plotRGB(p3, 4, 3, 2, stretch="lin")
+
+#all together
 par(mfrow=c(1,3))
 plotRGB(p1, 4, 3, 2, stretch="lin")
 plotRGB(p2, 4, 3, 2, stretch="lin")
@@ -72,13 +77,13 @@ dev.off()
 
 # save the images
 
-png("p1.png")
+png("p1a.png")
 plotRGB(p1, 4, 3, 2, stretch="lin")
 dev.off()
-png("p2.png")
+png("p2a.png")
 plotRGB(p2, 4, 3, 2, stretch="lin")
 dev.off()
-png("p3.png")
+png("p3a.png")
 plotRGB(p3, 4, 3, 2, stretch="lin")
 dev.off()
 
