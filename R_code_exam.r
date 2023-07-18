@@ -63,6 +63,7 @@ plotRGB(p3, 3, 2, 1, stretch="lin")
 dev.off()
 
 #  difference
+par(mfrow=c(1,3))
 plotRGB(p1, 4, 3, 2, stretch="lin")
 plotRGB(p2, 4, 3, 2, stretch="lin")
 plotRGB(p3, 4, 3, 2, stretch="lin")
