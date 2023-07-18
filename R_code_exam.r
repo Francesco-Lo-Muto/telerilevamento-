@@ -90,6 +90,16 @@ dev.off()
 # DVI
 dvip1 = p1[[4]] - p1[[3]]      
 dvip1
+# dvip1 
+class      : RasterLayer 
+dimensions : 10980, 10980, 120560400  (nrow, ncol, ncell)
+resolution : 10, 10  (x, y)
+extent     : 499980, 609780, 4190220, 4300020  (xmin, xmax, ymin, ymax)
+crs        : +proj=utm +zone=33 +datum=WGS84 +units=m +no_defs 
+source     : r_tmp_2023-07-18_173302_9104_70944.grd 
+names      : layer 
+values     : -6504, 11452  (min, max)
+
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(dvip1, col=cl) 
 
