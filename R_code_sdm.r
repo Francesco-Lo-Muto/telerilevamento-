@@ -26,7 +26,7 @@ species #
 
 # SpatialPointsDataFrame 
 # Occurrence
-plot(species, pch=19) # visualizzo una nuvola di punti
+plot(species, pch=19) # I see a point cloud
 
 # Let's plot a graph with the occurrences
 species$Occurrence # I display a binomial array of 0 and 1
