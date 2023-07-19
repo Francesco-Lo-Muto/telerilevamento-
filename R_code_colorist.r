@@ -32,7 +32,7 @@ pal <- palette_timecycle(fiespa_occ)
 # maps: 
 map_multiples(met1, pal, ncol=3, labels=names(fiespa_occ))
 
-# maps: to visualiza a single layer
+# maps: to visualize a single layer
 map_single(met1, pal, layer=6)
 
 # Custom palette
