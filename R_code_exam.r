@@ -71,6 +71,7 @@ plotRGB(p3, 3, 2, 1, stretch="lin")
 dev.off()
 
 # To highlight the differce of vegetated areas before and after the fire season I plot the band B8, B4, B3 (vnir, red, green).
+# Using RGB function
 plotRGB(p1, 4, 3, 2, stretch="lin")
 plotRGB(p2, 4, 3, 2, stretch="lin")
 plotRGB(p3, 4, 3, 2, stretch="lin")
