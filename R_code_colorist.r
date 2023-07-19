@@ -2,9 +2,9 @@
 
 install.packages("colorist")
 library(colorist)
-library(ggplot2) # perchè colorist funziona solo con ggplot2
+library(ggplot2) # Colorist work through ggplot
 
-# time series field sparrow
+# Time series field sparrow
 data("fiespa_occ")
 fiespa_occ 
 ## class      : RasterStack 
@@ -16,10 +16,10 @@ fiespa_occ
 ## min values :         0,         0,         0,         0,         0,         0,         0,         0,         0,         0,         0,         0 
 ## max values : 0.8538026, 0.8272926, 0.7993844, 0.7805922, 0.7799550, 0.7745436, 0.7626938, 0.7867995, 0.7790458, 0.7896419, 0.8158410, 0.8681034 
 
-# il flusso di lavoro nella utilizzazione del pacchetto colorist:
+# The workflow using colorist package:
 # 1. metrics
 # 2. palettes
-# 3.maps
+# 3. maps
 # 4. legends
 
 
@@ -29,44 +29,42 @@ met1 <- metrics_pull(fiespa_occ)
 # palette
 pal <- palette_timecycle(fiespa_occ)
 
-# maps: creiamo una mappa multipla per vedere le opzioni possibili
+# maps: 
 map_multiples(met1, pal, ncol=3, labels=names(fiespa_occ))
 
-# maps: per visualizzare un singolo layer
+# maps: to visualiza a single layer
 map_single(met1, pal, layer=6)
 
-# personalizzare la palette
+# Custom palette
 p1_custom <- palette_timecycle(12, start_hue=60)
 
 map_multiples(met1, p1_custom , ncol=3, labels=names(fiespa_occ))
 
-# creazione della mappa distillata
+# Creation of the distilled map
 met1_distill <- metrics_distill(fiespa_occ)
 map_single(met1_distill, pal)
-# verde: bassa specificità, specie che ci sono tutto l'anno
-# blu: specie che stanno in quel luogo durante l'inverno, perchè magari è più protetta
 
-# usando la palette personalizzata
+
+# Using the custom palette
 map_single(met1_distill,p1_custom)
 
-# legenda
+# Legend
 legend_timecycle(pal, origin_label="1 jan")
 
 
-
-# esempio: Pekania penna(mammifero pescivoro)
+# Example: Pekania penna
 data("fisher_ud")
 met2 <- metrics_pull(fisher_ud)
 pal2 <- palette_timeline(fisher_ud)
 head(pal2) # colore restituito come esadecimale, per capire il colore esiste un convertitore da esadecimale a RGB e viceversa
 # https://toolset.mrw.it/web-design/hex-to-rgb.html
 
-# mappe multiple
+# Multiple maps
 map_multiples(met2, pal2, ncol=3, lambda_i=-12)
 
-# mappa distillata: visualizzo gli spostamenti di questo mammifero
+# Distilled map: I visualize the movements of this mammal
 met2_distill <- metrics_distill(fisher_ud)
 map_single(met2_distill, pal2, lambda_i=-10)
 
-#legenda
+# Legend
 legend_timeline(pal2)
