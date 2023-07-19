@@ -188,7 +188,7 @@ plot(ndvip3, col=cl)
 dev.off()
 
 # DVI difference between May and September 2021
-difdvi = dvip1 - dvip2
+diffdvi = dvip1 - dvip2
 cld <- colorRampPalette(c('blue','white','red'))(100)
 plot(difdvi, col=cld)
 
