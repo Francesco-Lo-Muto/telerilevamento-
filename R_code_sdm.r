@@ -4,15 +4,14 @@
 # install.packages("sdm")
 # install.packages("rgdal")
 
-# richiamiamo le librerie necessarie
+# Recall libraries needed to work
 library(raster)
 library(sdm)
 library(rgdal)
 
-# non usiamo la working directory, ma usiamo la funzione system.file
+# We don't use the working directory but system.file function
 
 file <- system.file("external/species.shp", package="sdm")
-# produciamo uno shapefile con la funzione del pacchetto raster shapefile()
 species <- shapefile(file)
 species #
 
@@ -25,12 +24,12 @@ species #
 ## min values  :          0 
 ## max values  :          1 
 
-# si tratta di uno oggetto SpatialPointsDataFrame 
-# occurrence è la presenza
+# SpatialPointsDataFrame 
+# Occurrence
 plot(species, pch=19) # visualizzo una nuvola di punti
 
-# plottiamo un grafico con le occurence: presenze/assenze
-species$Occurrence # visualizzo una matrice binomiale di 0 e 1 riportata di seguito
+# Let's plot a graph with the occurrences
+species$Occurrence # I display a binomial array of 0 and 1
 
 ##[1] 1 0 1 1 1 0 0 1 1 1 1 1 1 0 1 1 0 1 1 0 0 1 0 1 1 0 1 0 1 0 1 0 1 1 1 1 0 1 0 0 0 0 0 0 0 1
 ## [47] 0 0 1 0 1 0 0 0 0 0 1 1 1 1 0 0 1 0 1 0 1 1 1 1 0 0 0 0 0 1 0 0 1 0 1 0 1 1 1 0 0 1 1 0 0 1
@@ -38,29 +37,26 @@ species$Occurrence # visualizzo una matrice binomiale di 0 e 1 riportata di segu
 ##[139] 1 1 0 1 0 1 0 0 1 1 0 0 1 0 0 1 1 0 0 0 0 1 1 1 0 0 0 0 1 0 0 1 0 1 0 0 0 0 1 0 1 0 1 0 1 0
 ##[185] 0 0 0 1 1 0 1 0 1 1 0 1 0 0 0 0
 
-# mappiamo solo le presenze
 plot(species[species$Occurrence==1,], col="blue", pch=19)
-#oppure
 occ <- species$Occurrence
 
-# mappiamo insieme presenze e assenze
-# con il comando points() visualizzo il grafico realizzato con le presenze precedentemente aggiungendo i punti relativi alle assenze
+# Points command () 
 points(species[species$Occurrence==0,], col="red", pch=19)
 
 
-# predittori: definisco il percorso dove si trova
+# Predictors: I define where is the path
 path <- system.file("external", package="sdm")
 
-# lista dei predittori
-lst <- list.files(path=path, pattern="asc", full.names=T) # si può indicare che è una estensione scrivendo "asc$"
-# full.names in questo caso è necessario per mantenere il path
-lst # premendo invio ottengo le seguenti informazioni
+# Predictors list
+lst <- list.files(path=path, pattern="asc", full.names=T)
+# full.names 
+lst 
 ## [1] "/Library/Frameworks/R.framework/Versions/4.1/Resources/library/sdm/external/elevation.asc"    
 ## [2] "/Library/Frameworks/R.framework/Versions/4.1/Resources/library/sdm/external/precipitation.asc"
 ## [3] "/Library/Frameworks/R.framework/Versions/4.1/Resources/library/sdm/external/temperature.asc"  
 ## [4] "/Library/Frameworks/R.framework/Versions/4.1/Resources/library/sdm/external/vegetation.asc"
 
-preds <- stack(lst) # per importare i file, in questo caso abbiamo importato 4 file
+preds <- stack(lst) # To import file
 ## class      : RasterStack 
 ## dimensions : 71, 124, 8804, 4  (nrow, ncol, ncell, nlayers)
 ## resolution : 4219.223, 4219.223  (x, y)
@@ -68,17 +64,16 @@ preds <- stack(lst) # per importare i file, in questo caso abbiamo importato 4 f
 ## crs        : NA 
 ## names      : elevation, precipitation, temperature, vegetation 
 
-# predittori, variabili ambientali, che ci aiutano a capire dove si troverà più probabilmente nello spazio una specie
+# Predictors, environmental variables, help us understand where in space a species is most likely to be found
 
 cl <- colorRampPalette(c("blue", "orange", "red", "yellow"))(100)
 plot(preds, col=cl)
-# visualizzo 4 immagini:
-# elevation: parte blu meno elevata
-# precipitation: nella parte montana ho picchi di precipitazioni
-# temperature: parte montana a basse temperature
-# NDVI: sopra i 3000 m non ho vegetazione
+# elevation: less elevated blue part
+# precipitation: in the mountainous part I have peaks of precipitation
+# temperature: mountainous part at low temperatures
+# NDVI: above 3000 m I have no vegetation
 
-# plot dei predittori con le presenze
+
 
 elev <- preds$elevation
 prec <- preds$precipitation
@@ -87,21 +82,21 @@ veg <- preds$vegetation
 
 plot(elev, col=cl)
 points(species[species$Occurrence==1,], col="black", pch=19)
-# abbiamo una specie a cui non piace vivere a quote elevate
+# We have a species that doesn't like living at high altitudes
 
 plot(temp, col=cl)
 points(species[occ == 1,], pch=19)
-# preferisce vivere a temperature non troppo elevate
+# Prefers to live in temperatures that are not too high
 
 plot(prec, col=cl)
 points(species[occ == 1,], pch=19)
-# la specie preferisce temperature medio-alte
+# the species prefers medium-high temperatures
 
 plot(veg, col=cl)
 points(species[occ == 1,], pch=19)
-# la specie preferisce essere protetta da vegetazione, se scarsa non favorevole no habitat favorevole
+# the species prefers to be protected by vegetation
 
-# settare i dati con il pacchetto sdm
+# set the data with the sdm package
 datasdm <- sdmData(train=species, predictors=preds)
 datasdm # premendo invio otterrò i seguenti dati
 
@@ -116,10 +111,10 @@ datasdm # premendo invio otterrò i seguenti dati
 ## number of records                     :  200 
 ## has Coordinates?                      :  TRUE 
 
-# creiamo un modello y = a + b * elev + b * temp
-# y sono occurrence
+#let's create a model y = a + b * elev + b * temp
+
 m1 <- sdm(Occurrence ~ elevation + precipitation + temperature + vegetation, data=datasdm, methods="glm")
-m1 # premendo invio si ottengono le seguenti informazioni
+
 ## class                                 : sdmModels 
 ## ======================================================== 
 ## number of species                     :  1 
@@ -132,7 +127,8 @@ m1 # premendo invio si ottengono le seguenti informazioni
 ## ---------------------- 
 ## glm        :        100   %
 
-###################################################################
+
+
 ## model performance (per species), using training test dataset:
 ## -------------------------------------------------------------------------------
 
@@ -143,25 +139,25 @@ m1 # premendo invio si ottengono le seguenti informazioni
 ## -------------------------------------------------------------------------
 ##glm        :     0.88    |     0.7     |     0.69    |     0.83     
 
-# creare il layer raster di output
+# create output raster layer
 p1 <- predict(m1, newdata=preds)
-# previsioni sulla maggior probabilità della presenza delle specie maggiore probabilita di prsenza di una certa specie
+
 
 # output
 plot(p1, col=cl)
 points(species[occ == 1,], pch=19)
-# visualizzo una mappa di previsione della nostro distribuzione della specie
-# i punti neri indicano probabilità maggiore di presenza, dove però ho il colore blu allora sarà meno probabile la sua presenza
+# display a forecast map of species distribution
+# the black dots indicate a greater probability of its presence, but where the color is blue, its presence will be less likely
 
-# plottare modello predittivo e variabili ambientali insieme
+# Let's plot all together 
 par(mfrow=c(2,3))
 plot(p1, col=cl)
 plot(elev, col=cl)
 plot(temp, col=cl)
 plot(prec, col=cl)
 plot(veg, col=cl)
-# visualizzo il modello predittivo e le mappe relative alle variabili ambientali
 
-# oppure posso fare uno stack
+
+# Let's create a stack
 final <- stack(preds, p1)
 plot(final, col=cl)
