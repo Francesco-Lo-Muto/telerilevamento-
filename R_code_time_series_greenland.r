@@ -1,4 +1,4 @@
-#Ttime series analysis of Greenland LST data
+#Time series analysis of Greenland LST data
 
 library (raster)
 
