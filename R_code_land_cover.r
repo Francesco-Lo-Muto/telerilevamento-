@@ -34,7 +34,7 @@ l92c <- unsuperClass (l92, nClasses=2)
 l92c
 unsuperClass results
 
-*************** Model ******************
+
 $model
 K-means clustering with 2 clusters of sizes 8955, 1045
 
@@ -46,7 +46,7 @@ Cluster centroids:
 Within cluster sum of squares by cluster:
 [1] 10486659  7014305
 
-*************** Map ******************
+
 $map
 class      : RasterLayer 
 dimensions : 478, 714, 341292  (nrow, ncol, ncell)
