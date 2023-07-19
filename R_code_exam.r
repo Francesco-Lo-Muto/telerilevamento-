@@ -192,3 +192,10 @@ diffdvi = dvip1 - dvip2
 cld <- colorRampPalette(c('blue','white','red'))(100)
 plot(diffdvi, col=cld)
 
+# Let's save
+
+png("diffdvi.png")
+cld <- colorRampPalette(c('blue','white','red'))(100)
+plot(diffdvi, col=cld)
+
+
