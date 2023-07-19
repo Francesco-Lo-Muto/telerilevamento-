@@ -23,13 +23,13 @@ plotRGB (l06, 1, 2, 3, stretch="lin")
 # Making a simple multifrme with ggplot2
 ggRGB(l92, 1, 2, 3, stretch="lin") 
 ggRGB(l06, 1, 2, 3, stretch="lin")
-# through the patchwork package I can join the 2 images
+# Through the patchwork package I can join the 2 images
 # First plot = p1 ; Second plot = p2
 p1 <- ggRGB(l92, 1, 2, 3, stretch="lin") 
 p2 <- ggRGB(l06, 1, 2, 3, stretch="lin")
 p1+p2 
 p1/p2 
-# unsuperClass function , to classify images 
+# UnsuperClass function , to classify images 
 l92c <- unsuperClass (l92, nClasses=2)
 l92c
 unsuperClass results
@@ -58,8 +58,8 @@ names      : class
 values     : 1, 2  (min, max)
 
 plot(l92c$map) #let's plot
-# class 1: forest 
-# class 2: agricultural areas (+water)
+# Class 1: forest 
+# Class 2: agricultural areas (+water)
 
 # Exercise: classify the Landsat image from 2006
 
@@ -67,8 +67,8 @@ l06c <- unsuperClass(l06, nClasses=2)
 l06c
 
 plot(l06c$map) # Let's plot
-# class 1: forest 
-# class 2: agricultural areas (+water)
+# Class 1: forest 
+# Class 2: agricultural areas (+water)
 
 # Freq function generate frequency tables, show how many pixels there are
 freq(l92c$map)
@@ -81,7 +81,7 @@ tot92 <- 341292
 # Proportion of classes
 prop_forest_92 <- 306053 / tot92
 
-# Prcent of classes
+# Percent of classes
 perc_forest_92 <- 306053 * 100 / tot92
 
 # Exercise: calculate the percentage of agricultural areas in 1992
@@ -96,9 +96,9 @@ freq(l06c$map)
  value  count
 [1,]     1 177630
 [2,]     2 165096
-# class 1: 177630 pixels (forest)
-# class 2: 165096 pixels (agricultural areas)
-# percentages 2006
+# Class 1: 177630 pixels (forest)
+# Class 2: 165096 pixels (agricultural areas)
+# Percentages 2006
 tot_06 <- 342726
 percent_forest_06 <- 177941 * 100 / tot_06
 percent_forest_06
@@ -112,7 +112,7 @@ percent_agr_06 <- 100 - percent_forest_06
 # percent_agr_92: 10.32518
 # percent_forest_06: 51.91932
 # percent_agr_06: 48.08068
-# dataframe è una tabella
+# Dataframe is a table
 # Let's built a dataframe with our data
 # Columns (fields)
 class <- c("Forest", "Agriculture")
