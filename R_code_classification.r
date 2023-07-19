@@ -63,7 +63,7 @@ plot(soc$map, col=cl)
 
 
 
-# day 2: Grand Canyon
+# Day 2: Grand Canyon
 
 gc <- brick("dolansprings_oli_2013088_canyon_lrg.jpg")
 gc
@@ -83,7 +83,7 @@ plotRGB(gc, r=1, g=2, b=3, stretch="lin")
 # I will change from linear stretch to histogram stretch
 plotRGB(gc, r=1, g=2, b=3, stretch="hist")
 
-# create classes for images
+# Create classes for images
 gc_classes2 <- unsuperClass(gc, nClasses=2)
 gc_classes2
 ## unsuperClass results
@@ -115,15 +115,15 @@ gc_classes2
 ##source     : r_tmp_2022-04-21_172910_1521_11632.grd 
 ##names      : class 
 ##values     : 1, 2  (min, max)
-plot(gc_classes2$map) # white is rock while the green part represents everything else (shadow, water)
+plot(gc_classes2$map) # White is rock while the green part represents everything else (shadow, water)
 # set.seed(17) to keep the same classification
 
-# execise: classify the map with 4 classes
+# Execise: classify the map with 4 classes
 gc_classes4 <- unsuperClass(gc, nClasses=4)
 clgc <- colorRampPalette(c("yellow", "red", "blue", "black"))(100)
 plot(gc_classes4$map, col=clgc)
 
-# appear the classified map with the original set
+# Appear the classified map with the original set
 par(mfrow=c(2,1))
 plot(gcclass4$map, col=clgc)
 plotRGB(gc, r=1, g=2, b=3, stretch="hist")
