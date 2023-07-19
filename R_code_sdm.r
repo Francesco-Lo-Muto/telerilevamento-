@@ -90,13 +90,13 @@ points(species[occ == 1,], pch=19)
 
 plot(prec, col=cl)
 points(species[occ == 1,], pch=19)
-# the species prefers medium-high temperatures
+# The species prefers medium-high temperatures
 
 plot(veg, col=cl)
 points(species[occ == 1,], pch=19)
-# the species prefers to be protected by vegetation
+# The species prefers to be protected by vegetation
 
-# set the data with the sdm package
+# Set the data with the sdm package
 datasdm <- sdmData(train=species, predictors=preds)
 datasdm # premendo invio otterrò i seguenti dati
 
@@ -111,7 +111,7 @@ datasdm # premendo invio otterrò i seguenti dati
 ## number of records                     :  200 
 ## has Coordinates?                      :  TRUE 
 
-#let's create a model y = a + b * elev + b * temp
+# Let's create a model y = a + b * elev + b * temp
 
 m1 <- sdm(Occurrence ~ elevation + precipitation + temperature + vegetation, data=datasdm, methods="glm")
 
@@ -139,15 +139,15 @@ m1 <- sdm(Occurrence ~ elevation + precipitation + temperature + vegetation, dat
 ## -------------------------------------------------------------------------
 ##glm        :     0.88    |     0.7     |     0.69    |     0.83     
 
-# create output raster layer
+# Create output raster layer
 p1 <- predict(m1, newdata=preds)
 
 
-# output
+# Output
 plot(p1, col=cl)
 points(species[occ == 1,], pch=19)
-# display a forecast map of species distribution
-# the black dots indicate a greater probability of its presence, but where the color is blue, its presence will be less likely
+# Display a forecast map of species distribution
+# The black dots indicate a greater probability of its presence, but where the color is blue, its presence will be less likely
 
 # Let's plot all together 
 par(mfrow=c(2,3))
