@@ -1,4 +1,4 @@
-# code for generating land cover maps from satellite imagery
+# Code for generating land cover maps from satellite imagery
 
 library(raster)
 library(RStoolbox) #  for classification
@@ -9,7 +9,7 @@ library(patchwork)
 
 setwd("C:/lab/") # Windows
 
-l92 <- brick("defor1_.jpg") plottiamo l'immafine satellitare e usiamo direttamente la funzone brick
+l92 <- brick("defor1_.jpg") # Let's plot a satellite image using brick function
 plotRGB (l92, 1, 2, 3, stretch="lin")
 
 # Exercise: import defor2 and plot in a single window
@@ -19,17 +19,17 @@ par(mfrow=c(2,1))
 plotRGB (l92, 1, 2, 3, stretch="lin")
 plotRGB (l06, 1, 2, 3, stretch="lin")
 
-utilizziamo la funzione ggRGB per fare multiframe in modo più veloce rispetto a parmfrow
-# making a simple multifrme with ggplot2
-ggRGB(l92, 1, 2, 3, stretch="lin") # sugli assi x e y ho le coordinate
+# Let's use the ggRGB function to multiframe faster than parmfrow
+# Making a simple multifrme with ggplot2
+ggRGB(l92, 1, 2, 3, stretch="lin") 
 ggRGB(l06, 1, 2, 3, stretch="lin")
-# traminte il pacchetto pachtwork io posso unire le 2 immagini
-# associamo i 2 plot ad un nome il primo lo chiamo p1 e il seocndo p2
+# through the patchwork package I can join the 2 images
+# First plot = p1 ; Second plot = p2
 p1 <- ggRGB(l92, 1, 2, 3, stretch="lin") 
 p2 <- ggRGB(l06, 1, 2, 3, stretch="lin")
-p1+p2 li mette insime
-p1/p2 li ho uno sopra e uno sotto
-# unsuperClass function , per classificare le immagini
+p1+p2 
+p1/p2 
+# unsuperClass function , to classify images 
 l92c <- unsuperClass (l92, nClasses=2)
 l92c
 unsuperClass results
@@ -56,16 +56,21 @@ crs        : NA
 source     : memory
 names      : class 
 values     : 1, 2  (min, max)
+
 plot(l92c$map) #let's plot
 # class 1: forest 
 # class 2: agricultural areas (+water)
+
 # Exercise: classify the Landsat image from 2006
+
 l06c <- unsuperClass(l06, nClasses=2)
 l06c
-plot(l06c$map) #let's plot
+
+plot(l06c$map) # Let's plot
 # class 1: forest 
 # class 2: agricultural areas (+water)
-# fre function mi genera delle tabelle di frequena, mi dice quanti pixel ci sono 
+
+# Freq function generate frequency tables, show how many pixels there are
 freq(l92c$map)
  value  count
 [1,]     1 306053
@@ -73,10 +78,10 @@ freq(l92c$map)
 # class 1: 306053 pixels (forest)
 # class 2: 35239 pixels (agricultural areas)
 tot92 <- 341292
-# proportion of classes
+# Proportion of classes
 prop_forest_92 <- 306053 / tot92
 
-# percent of classes
+# Prcent of classes
 perc_forest_92 <- 306053 * 100 / tot92
 
 # Exercise: calculate the percentage of agricultural areas in 1992
@@ -123,7 +128,7 @@ geom_bar(stat="identity", fill="white")
 ggplot(multitemporal, aes(x=class, y=percent_2006, color=class))+
 geom_bar(stat="identity", fill="white")
 
-# to make a pdf:
+# To make a pdf:
 pdf("percentages_1992")
 ggplot(multitemporal, aes(x=class, y=percent_1992, color=class))+
 geom_bar(stat="identity", fill="white")
