@@ -3,6 +3,7 @@
 
 # Loading libraries needed for this work
 library(raster)
+library(RStoolbox)
 library(rgdal)
 library(ggplot2)
 
