@@ -1,9 +1,9 @@
-# santinel lanciato da esa ha una risoluzione di 10 metri
-# variazioni geostrutturali e le variazioni ecologiche, landcover, fino ai boschi
+# Sentinel launched by esa has a resolution of 10 meters
+# Geostructural variations and ecological variations, landcover, up to the woods
 
 # R code variability
 
-# install.packages("viridis")
+# Install.packages("viridis")
 library(raster)
 library(RStoolbox) # for image viewing and variability
 library(ggplot2) # for ggplot plotting
@@ -32,9 +32,9 @@ ggRGB(sen, 2, 1, 3, stretch="lin")
 
 g1 <- ggRGB(sen, 1, 2, 3)
 g2 <- ggRGB(sen, 2, 1, 3)
-# now I plot both
+# Now I plot both
 g1+g2
-# calculation of variability over NIR
+# Calculation of variability over NIR
 nir <- sen[[1]]
 plot(nir)
 sd1 <- focal(nir, matrix(1/9, 3, 3), fun=sd)
@@ -45,14 +45,14 @@ plot(sd1, col=clsd)
 ggplot() +
 geom_raster(sd, mapping=aes(x=x, y=y, fill=layer))
 
-# withg viridis
-# https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
+# With viridis
+# Https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
 ggplot() +
 geom_raster(sd, mapping=aes(x=x, y=y, fill=layer))+
 scale_fill_viridis()+
 ggtitle("Standard deviationof by viridis")
 
-# with cividis
+# With cividis
 ggplot() +
 geom_raster(sd, mapping=aes(x=x, y=y, fill=layer))+
 scale_fill_viridis(option="cividis")+
