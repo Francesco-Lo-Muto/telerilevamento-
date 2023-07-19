@@ -26,7 +26,8 @@ soc <- unsuperClass(so, nClasses=3)
 soc # clicking enter I will get some information
 ## unsuperClass results
 
-## *************** Model ******************
+
+
 ## $model
 ## K-means clustering with 3 clusters of sizes 4079, 3851, 2070
 ##
@@ -43,7 +44,9 @@ soc # clicking enter I will get some information
 ## Within cluster sum of squares by cluster:
 ## [1] 3729825 3952455 4326981
 ##
-## *************** Map ******************
+
+
+
 ## $map
 ## class      : RasterLayer 
 ## dimensions : 1157, 1920, 2221440  (nrow, ncol, ncell)
@@ -60,7 +63,7 @@ plot(soc$map, col=cl)
 
 
 
-### day 2: Grand Canyon
+# day 2: Grand Canyon
 
 gc <- brick("dolansprings_oli_2013088_canyon_lrg.jpg")
 gc
@@ -84,8 +87,9 @@ plotRGB(gc, r=1, g=2, b=3, stretch="hist")
 gc_classes2 <- unsuperClass(gc, nClasses=2)
 gc_classes2
 ## unsuperClass results
-##
-## *************** Model ******************
+
+
+
 ## $model
 ## K-means clustering with 2 clusters of sizes 6886, 3114
 ##
@@ -100,7 +104,8 @@ gc_classes2
 ## Within cluster sum of squares by cluster:
 ## [1] 9530019 7358779
 ##
-## *************** Map ******************
+
+
 ##$map
 ##class      : RasterLayer 
 ##dimensions : 6222, 9334, 58076148  (nrow, ncol, ncell)
