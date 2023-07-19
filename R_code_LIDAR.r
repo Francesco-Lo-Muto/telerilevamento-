@@ -12,7 +12,8 @@ setwd("C:/lab/")
 
 
 dsm_2004 <- raster("2004Elevation_DigitalElevationModel-2.5m.tif")
-dsm_2004 #premo invio
+dsm_2004
+
 ## class      : RasterLayer 
 ## dimensions : 418, 644, 269192  (nrow, ncol, ncell)
 ## resolution : 2.5, 2.5  (x, y)
@@ -36,13 +37,14 @@ plot(dtm_2004)
 
 chm_2004 <- dsm_2004 - dtm_2004
 plot(chm_2004) 
-# visualizzo una immagine in cui ogni colore rappresenta diverse altezze
-# colori chiari chiari rappresentano il suolo, colori tendenti al verde sono le piante
+# each color represents different altitudes
+# the light colors = soil
+# green color = plants
 
-# per l'anno 2013
+#  year 2013
 
 dsm_2013 <- raster("2013Elevation_DigitalElevationModel-0.5m.tif")
-dsm_2013 # premendo invio si ottengono le seguenti informazioni
+dsm_2013 
 
 ## class      : RasterLayer 
 ## dimensions : 2094, 3224, 6751056  (nrow, ncol, ncell)
@@ -53,7 +55,7 @@ dsm_2013 # premendo invio si ottengono le seguenti informazioni
 ## names      : X2013Elevation_DigitalElevationModel.0.5m 
 
 dtm_2013 <- raster("2013Elevation_DigitalElevationModel-0.5m.tif")
-dtm_2013 # premendo invio si ottengono le seguenti informazioni
+dtm_2013 
 
 ## class      : RasterLayer 
 ## dimensions : 2094, 3224, 6751056  (nrow, ncol, ncell)
@@ -64,14 +66,13 @@ dtm_2013 # premendo invio si ottengono le seguenti informazioni
 ## names      : X2013Elevation_DigitalTerrainModel.0.5m 
 
 chm_2013 <- dsm_2013 - dtm_2013
-# l'immagine visualizzata ha maggior risoluzione rispetto a quella ottenuta nel 2004
-# confronto valori di resolution per dsm e dtm dei vari anni
+# the image has a higher resolution than the one obtained in 2004
 
-dif_chm <- chm_2013 - chm_2004 # non funzionerà perchè ho diversa risoluzione different resolution,error
-# portiamo i due raster alla stessa risoluzione: dobbiamo ricampionare resample
-# portiamo la risoluzione di chm_2013 a quella di chm_2004
 
-chm_2013_resample <- resample(chm_2013, chm_2004) # necessita rgdal o RStoolbox per svolgere questo calcolo
+dif_chm <- chm_2013 - chm_2004 
+# To resample, the resolution of chm_2013 is the same of chm_2004
+
+chm_2013_resample <- resample(chm_2013, chm_2004) 
 dif_chm <- chm_2013_resample - chm_2004
 
 ggplot() +
