@@ -1,9 +1,9 @@
 # Code for generating land cover maps from satellite imagery
 
 library(raster)
-library(RStoolbox) #  for classification
-# install.packages("ggplot2")
-# install.packages("patchwork")
+library(RStoolbox) #  To classification
+# Install.packages("ggplot2")
+# Install.packages("patchwork")
 library(ggplot2)
 library(patchwork)
 
