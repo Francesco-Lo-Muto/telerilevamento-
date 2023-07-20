@@ -1,6 +1,6 @@
 # This is my first script
 
-# install.packages ("raster") 
+# Install.packages ("raster") 
 library (raster)
 
 # Setting working directory within path "C"
