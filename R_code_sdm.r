@@ -98,7 +98,7 @@ points(species[occ == 1,], pch=19)
 
 # Set the data with the sdm package
 datasdm <- sdmData(train=species, predictors=preds)
-datasdm # premendo invio otterrò i seguenti dati
+datasdm 
 
 ## class                                 : sdmdata 
 ## =========================================================== 
