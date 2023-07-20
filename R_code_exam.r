@@ -1,4 +1,4 @@
-# The purpose of this project is to show the loss of vegetation in the Aspromonte National Park during summer 2021
+# The purpose of this project is to show the loss of vegetation after some forest fires in the Aspromonte National Park during summer 2021
 # The images analyzed refer to May 2021 (before the fire event), September 2021 (after fire event) and two year later (July 2023)
 
 # Loading libraries needed for this work
