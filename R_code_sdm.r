@@ -1,8 +1,8 @@
 # R code for species distribution modelling
 
-# install.packages("raster")
-# install.packages("sdm")
-# install.packages("rgdal")
+# Install.packages("raster")
+# Install.packages("sdm")
+# Install.packages("rgdal")
 
 # Recall libraries needed to work
 library(raster)
