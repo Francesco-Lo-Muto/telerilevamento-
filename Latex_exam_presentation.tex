@@ -1,0 +1,105 @@
+\documentclass{beamer}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage[top=2cm, bottom=2cm, outer=0cm, inner=0cm]{geometry}
+\usetheme{Berkeley}
+\usecolortheme{spruce}
+
+\title{Perdita della vegetazione a seguito degli incendi che hanno colpito l'Aspromonte durante l'Estate 2021}
+\tikz [remember picture,overlay]\node[opacity=0.3,inner sep=0pt] {\includegraphics{raghidi (1).jpg}}
+\author{Francesco Lo Muto}
+\begin{document}
+
+\maketitle
+\AtBeginSection
+{	
+\begin{frame}
+\frametitle{}
+\tableofcontents[currentsection,currentsubsection,currentsubsubsection]
+\end{frame}
+}
+\section{Area di studio}
+\begin{frame}{Telerilevamento geo-ecologico}
+\begin{itemize}
+    \item L’area oggetto di studio è il parco nazionale dell'\textbf{Aspromonte} in provicia di Reggio Calabria. 
+    \item Il parco si estende per circa 64.153 ettari, nel 2021 entra a far parte della rete mondiale dei geoparchi curata dall'UNESCO
+\end{itemize}  
+\end{frame}
+\section{Scopo del lavoro}
+\begin{frame}{Telerilevamento geo-ecologico}
+\begin{itemize}
+\item mostrare la perdita di vegetazione dopo una serie di incendi boschivi avvenuti all'interno del \textbf{Parco Nazionale dell'Aspromonte} durante l'estate 2021
+\item \textbf{analisi multitemporale} dell'area di studio
+\item stato di salute e perdita della vegetazione attraverso il calcolo degli indici spettrali \textbf{DVI} e \textbf{NDVI}
+\end{itemize}    
+\end{frame}
+\section{Metodi e materiali}
+\begin{frame}{Telerilevamento geo-ecologico}
+\begin{itemize}
+    \item Immagini satellitari acquisite tramite il satellite \textbf{sentinel-2A} del programma Copernicus
+    \item Elaborazione dati tramite il \textbf{software R}
+    \includegraphics[width=0.4\textwidth]{sentinel 2.png}
+    \includegraphics[width=0.4\textwidth]{r logo.png}
+\end{itemize} 
+\end{frame}
+\section{Interpretazione dati}
+\begin{frame}{Telerilevamento geo-ecologico}
+\begin{itemize}
+    \item area di studio in colori naturali 
+    
+    \includegraphics[width=0.35\textwidth]{p1.png}
+    \includegraphics[width=0.35\textwidth]{p2.png}
+    \centering
+    \includegraphics[width=0.35\textwidth]{p3.png}
+    
+\end{itemize}  
+\end{frame}
+\begin{itemize}
+    \item visualizzazione dell'area in falsi colori
+    
+ \includegraphics[width=0.35\textwidth]{p1a.png}
+    \includegraphics[width=0.35\textwidth]{p2a.png}
+    \centering
+    \includegraphics[width=0.35\textwidth]{p3a.png}
+\end{itemize}
+\begin{itemize}
+    \item Calcolo indici spettrali \textbf{DVI} e \textbf{NDVI}
+    \item \textbf{DVI} è dato dalla sottrazione tra la riflettanza \textbf{NIR} e la riflettanza nel \textbf{ROSSO} e ci aiuta a comprendere lo stato di salute delle piante
+
+\includegraphics[width=0.45\textwidth]{dvip1.png}
+\includegraphics[width=0.45\textwidth]{dvip2.png}
+
+\includegraphics[width=0.7\textwidth]{dvip3.png}
+\item situazione Luglio 2023
+ 
+\end{itemize}
+\newpage
+\begin{itemize}
+    \item \textbf{NDVI} (Normalized Difference Vegetation Index) 
+    \begin{equation}
+        NDVI =\frac{NIR-RED}{NIR+RED}
+    \end{equation}
+    \item utile perché è possibile fare confronti tra figure con numero diverso di bit (immagini con risoluzione radiometrica differente).
+\lstinputlisting{CODICE.txt}
+\end{itemize}
+\newpage
+\begin{itemize}
+    \item \textbf{NDVI} di Maggio e Settembre 2021, Luglio 2023
+\includegraphics[width=0.35\textwidth]{ndvip1.png}
+\includegraphics[width=0.35\textwidth]{ndvip2.png}
+\centering
+\includegraphics[width=0.35\textwidth]{ndvip3.png}
+    
+\end{itemize}
+\section{Conclusioni}
+\begin{frame}{Telerilevamento geo-ecologico}
+\begin{itemize}
+    \item Gli incendi che hanno colpito il Parco dell'Aspromonte durante l'estate 2021 hanno avuto un impatto significativo sulla salute delle piante
+    \item 2 anni dopo la situazione appare in parziale recupero
+\end{itemize}
+    
+\end{frame}
+\newpage
+\tikz[remember picture,overlay] \node[opacity=1,inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{raghidi MOD.jpg}}
+\end{document}
