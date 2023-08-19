@@ -56,7 +56,7 @@ legend_timecycle(pal, origin_label="1 jan")
 data("fisher_ud")
 met2 <- metrics_pull(fisher_ud)
 pal2 <- palette_timeline(fisher_ud)
-head(pal2) # colore restituito come esadecimale, per capire il colore esiste un convertitore da esadecimale a RGB e viceversa
+head(pal2) 
 # https://toolset.mrw.it/web-design/hex-to-rgb.html
 
 # Multiple maps
